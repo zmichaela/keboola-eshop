@@ -4,7 +4,7 @@ Local development starter for a Keboola-connected web app that reads **Storage t
 
 ### Prereqs
 
-- Python 3.10+
+- Node.js 18+ (Node 20+ recommended)
 - A Keboola Storage API token for your project (the token determines which project data you can access)
 
 ### Configure environment
@@ -30,20 +30,15 @@ KBC_DEFAULT_LIMIT=10
 
 ### Install deps
 
-This project uses `pyproject.toml` so it can later deploy cleanly to Keboola Data Apps (`uv sync`).
-
 ```bash
-cd /Users/michaelazajacova/keboola-projects/keboola-eshop
-python -m venv .venv
-source .venv/bin/activate
-pip install -U pip
-pip install -e .
+cd /Users/michaelazajacova/keboola-eshop
+npm install
 ```
 
 ### Run locally
 
 ```bash
-uvicorn keboola_eshop.app:app --reload --host 127.0.0.1 --port 8050
+npm run dev
 ```
 
 ### Quick API connectivity check
@@ -51,19 +46,19 @@ uvicorn keboola_eshop.app:app --reload --host 127.0.0.1 --port 8050
 This prints an HTTP status and a short response preview (don’t share your token).
 
 ```bash
-python - <<'PY'
-from dotenv import load_dotenv
-load_dotenv(dotenv_path=".env")
-import os, requests
-url = os.environ["KBC_URL"].rstrip("/") + "/v2/storage/buckets"
-r = requests.get(url, headers={"X-StorageApi-Token": os.environ["KBC_TOKEN"], "Accept":"application/json"}, timeout=30)
-print("HTTP", r.status_code)
-print(r.text[:300])
-PY
+node - <<'JS'
+import "dotenv/config";
+
+const url = (process.env.KBC_URL || "").replace(/\/+$/, "") + "/v2/storage/buckets";
+const res = await fetch(url, { headers: { "X-StorageApi-Token": process.env.KBC_TOKEN, "Accept": "application/json" } });
+console.log("HTTP", res.status);
+console.log((await res.text()).slice(0, 300));
+JS
 ```
 
 Open:
 - `http://127.0.0.1:8050/` (also accepts POST)
+- `http://127.0.0.1:8050/api/hello`
 - `http://127.0.0.1:8050/api/health`
 - `http://127.0.0.1:8050/api/buckets`
 - `http://127.0.0.1:8050/api/tables`

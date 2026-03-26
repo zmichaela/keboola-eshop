@@ -1,11 +1,10 @@
 ## keboola-eshop — getting started
 
-This folder (`keboola-eshop/`) is a standalone project **inside** the git repo at `/Users/michaelazajacova/keboola-projects/`.
+This folder (`keboola-eshop/`) is a standalone project with its own git repository.
 
 ### What to open in Cursor
 
-- If you open **this folder** (`keboola-eshop/`) in Cursor, the project skill is available because it lives in `keboola-eshop/.cursor/skills/…`.
-- If you open the **repo root** (`keboola-projects/`) in Cursor, the repo-wide skill is available from `.cursor/skills/…`.
+- If you open **this folder** (`keboola-eshop/`) in Cursor, the project skill is available because it lives in `.cursor/skills/…`.
 
 ### Skill: dataapp-deployment
 
@@ -18,6 +17,6 @@ Key triggers:
 
 Where it lives in this project:
 
-- `keboola-eshop/.cursor/skills/dataapp-deployment/SKILL.md`
-- `keboola-eshop/.cursor/skills/dataapp-deployment/reference.md`
+- `.cursor/skills/dataapp-deployment/SKILL.md`
+- `.cursor/skills/dataapp-deployment/reference.md`
 

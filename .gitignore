@@ -1,13 +1,18 @@
 .env
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+.cache/
+.DS_Store
+
+# Optional local tooling
 .venv/
 __pycache__/
 *.pyc
 *.pyo
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
 *.egg-info/
-dist/
 build/
 .DS_Store
 
